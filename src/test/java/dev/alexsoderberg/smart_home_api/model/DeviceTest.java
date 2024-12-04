@@ -69,4 +69,11 @@ public class DeviceTest {
       sut.setName("   ");
     });
   }
+
+  @Test
+  void getTypeShouldReturnType() {
+    DeviceType expected = DeviceType.LIGHT;
+    DeviceType actual = sut.getType();
+    assertEquals(expected, actual);
+  }
 }

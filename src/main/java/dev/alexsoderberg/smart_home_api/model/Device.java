@@ -54,4 +54,8 @@ public class Device {
     this.name = newName;
     return this.name;
   }
+
+	public DeviceType getType() {
+		return null;
+	}
 }
