@@ -13,7 +13,6 @@ public class DeviceTest {
   @BeforeEach
   void setUp() {
     sut = new Device(
-      1L,
       "Light bulb",
       DeviceType.LIGHT 
     );
@@ -22,13 +21,11 @@ public class DeviceTest {
   @Test
   void deviceShouldBeCreatedWhenEnteredWithValidValues() {
     Device device = new Device(
-      1L,
       "Light bulb",
       DeviceType.LIGHT
     );
 
     assertNotNull(device);
-    assertEquals(device.getId(), 1L);
     assertEquals(device.getName(), "Light bulb");
     assertEquals(device.getType(), DeviceType.LIGHT);
     assertEquals(device.getStatus(), DeviceStatus.OFF);
@@ -37,14 +34,14 @@ public class DeviceTest {
   @Test
   void constructorShouldThrowExceptionWhenEnteredWithEmptyName() {
     assertThrows(IllegalArgumentException.class, () -> {
-      new Device(1L, "", DeviceType.LIGHT);
+      new Device("", DeviceType.LIGHT);
     });
   }
 
   @Test
   void constructorShouldThrowExceptionWhenEnteredWithBlankName() {
     assertThrows(IllegalArgumentException.class, () -> {
-      new Device(1L, "   ", DeviceType.CAMERA);
+      new Device("   ", DeviceType.CAMERA);
     });
   }
 }
