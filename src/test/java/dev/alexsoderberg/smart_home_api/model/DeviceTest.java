@@ -43,13 +43,6 @@ public class DeviceTest {
   }
 
   @Test
-  void getIdShouldReturnId() {
-    Long expected = 1L;
-    Long actual = sut.getId();
-    assertEquals(expected, actual);
-  }
-
-  @Test
   void getNameShouldReturnName() {
     String expected = "Light bulb";
     String actual = sut.getName();

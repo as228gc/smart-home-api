@@ -40,6 +40,10 @@ public class Device {
     }
   }
 
+  public Long getId() {
+    return this.id;
+  }
+  
   public String getName() {
     return this.name;
   }
@@ -49,9 +53,5 @@ public class Device {
 
     this.name = newName;
     return this.name;
-  }
-
-  public Long getId() {
-    return null;
   }
 }
