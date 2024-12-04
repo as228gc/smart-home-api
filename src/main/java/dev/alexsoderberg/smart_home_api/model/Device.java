@@ -43,4 +43,8 @@ public class Device {
   public String getName() {
     return this.name;
   }
+
+  public String setName(String expected) {
+    return null;
+  }
 }
