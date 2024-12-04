@@ -41,6 +41,6 @@ public class Device {
   }
 
   public String getName() {
-    return null;
+    return this.name;
   }
 }
