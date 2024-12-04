@@ -50,4 +50,8 @@ public class Device {
     this.name = newName;
     return this.name;
   }
+
+  public Long getId() {
+    return null;
+  }
 }
