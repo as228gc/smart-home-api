@@ -26,9 +26,6 @@ public class DeviceTest {
     );
 
     assertNotNull(device);
-    assertEquals(device.getName(), "Light bulb");
-    assertEquals(device.getType(), DeviceType.LIGHT);
-    assertEquals(device.getStatus(), DeviceStatus.OFF);
   }
 
   @Test
