@@ -39,4 +39,8 @@ public class Device {
       throw new IllegalArgumentException("The name can not be empty or blank.");
     }
   }
+
+  public String getName() {
+    return null;
+  }
 }

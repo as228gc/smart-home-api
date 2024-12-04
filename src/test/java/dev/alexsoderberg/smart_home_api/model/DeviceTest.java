@@ -41,4 +41,11 @@ public class DeviceTest {
       new Device("   ", DeviceType.CAMERA);
     });
   }
+
+  @Test
+  void getNameShouldReturnName() {
+    String expected = "Light bulb";
+    String actual = sut.getName();
+    assertEquals(expected, actual);
+  }
 }
