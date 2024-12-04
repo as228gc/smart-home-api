@@ -28,11 +28,15 @@ public class Device {
   private DeviceStatus status = DeviceStatus.OFF;
 
   public Device(String name, DeviceType type) {
-    if (name.isBlank() || name.isEmpty()) {
-      throw new IllegalArgumentException("The name can not be empty or blank.");
-    }
+    validateName(name);
 
     this.name = name;
     this.type = type;
-  }  
+  }
+
+  private void validateName(String name) throws IllegalArgumentException {
+    if (name.isBlank() || name.isEmpty()) {
+      throw new IllegalArgumentException("The name can not be empty or blank.");
+    }
+  }
 }
