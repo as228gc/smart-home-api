@@ -56,6 +56,6 @@ public class Device {
   }
 
 	public DeviceType getType() {
-		return null;
+		return this.type;
 	}
 }
