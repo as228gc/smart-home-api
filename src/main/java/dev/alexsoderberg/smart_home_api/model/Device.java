@@ -27,7 +27,7 @@ public class Device {
   @Column(nullable = false)
   private DeviceStatus status = DeviceStatus.OFF;
 
-  public Device(String name, DeviceType type) {
+  public Device(String name, DeviceType type) throws IllegalArgumentException {
     validateName(name);
 
     this.name = name;
@@ -40,7 +40,22 @@ public class Device {
     }
   }
 
+  public Long getId() {
+    return this.id;
+  }
+  
   public String getName() {
     return this.name;
   }
+
+  public String setName(String newName) throws IllegalArgumentException {
+    validateName(newName);
+
+    this.name = newName;
+    return this.name;
+  }
+
+	public DeviceType getType() {
+		return this.type;
+	}
 }

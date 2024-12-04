@@ -48,4 +48,32 @@ public class DeviceTest {
     String actual = sut.getName();
     assertEquals(expected, actual);
   }
+
+  @Test
+  void setNameShouldSetNewName() {
+    String expected = "Not a light bulb";
+    String actual = sut.setName(expected);
+    assertEquals(expected, actual);
+  }
+  
+  @Test
+  void setNameShouldThrowErrorWhenEnteredWithEmptyName() {
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.setName("");
+    });
+  }
+
+  @Test
+  void setNameShouldThrowErrorWhenEnteredWithBlankName() {
+    assertThrows(IllegalArgumentException.class, () -> {
+      sut.setName("   ");
+    });
+  }
+
+  @Test
+  void getTypeShouldReturnType() {
+    DeviceType expected = DeviceType.LIGHT;
+    DeviceType actual = sut.getType();
+    assertEquals(expected, actual);
+  }
 }
