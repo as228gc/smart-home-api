@@ -70,5 +70,6 @@ public class Device {
   }
 
   public void turnOff() {
+    this.status = DeviceStatus.OFF;
   }
 }
