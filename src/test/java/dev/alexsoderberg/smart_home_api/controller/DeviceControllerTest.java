@@ -1,6 +1,7 @@
 package dev.alexsoderberg.smart_home_api.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -39,6 +40,8 @@ public class DeviceControllerTest {
   void getAllDevicesShouldReturnAllDevices() {
     ResponseEntity<List<Device>> response = sut.getAllDevices();
     List<Device> retrievedDevices = response.getBody();
+
+    assertNotNull(retrievedDevices);
 
     assertEquals("Camera", retrievedDevices.get(1).getName());
     assertEquals(DeviceType.TV, retrievedDevices.get(2).getType());
