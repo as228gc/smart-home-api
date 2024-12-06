@@ -52,7 +52,8 @@ public class DeviceTest {
   @Test
   void setNameShouldSetNewName() {
     String expected = "Not a light bulb";
-    String actual = sut.setName(expected);
+    sut.setName(expected);
+    String actual = sut.getName();
     assertEquals(expected, actual);
   }
   
@@ -73,6 +74,14 @@ public class DeviceTest {
   @Test
   void getTypeShouldReturnType() {
     DeviceType expected = DeviceType.LIGHT;
+    DeviceType actual = sut.getType();
+    assertEquals(expected, actual);
+  }
+
+  @Test
+  void setTypeShouldSetNewType() {
+    DeviceType expected = DeviceType.CAMERA;
+    sut.setType(expected);
     DeviceType actual = sut.getType();
     assertEquals(expected, actual);
   }

@@ -48,14 +48,16 @@ public class Device {
     return this.name;
   }
 
-  public String setName(String newName) throws IllegalArgumentException {
+  public void setName(String newName) throws IllegalArgumentException {
     validateName(newName);
-
     this.name = newName;
-    return this.name;
   }
 
 	public DeviceType getType() {
 		return this.type;
 	}
+
+  public void setType(DeviceType newType) {
+    this.type = newType;
+  }
 }
