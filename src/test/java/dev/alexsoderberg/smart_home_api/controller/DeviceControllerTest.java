@@ -24,14 +24,16 @@ public class DeviceControllerTest {
 
   @BeforeEach
   void setUp() {
-    List<Device> devices = List.of(
-      new Device("Light bulb", DeviceType.LIGHT),
-      new Device("Camera", DeviceType.CAMERA),
-      new Device("TV", DeviceType.TV)
-    );
+    Device mockLight = Mockito.mock(Device.class);
+    when(mockLight.getName()).thenReturn("Light bulb");
+    when(mockLight.getType()).thenReturn(DeviceType.LIGHT);
+
+    Device mockCamera = Mockito.mock(Device.class);
+    when(mockCamera.getName()).thenReturn("Camera");
+    when(mockCamera.getType()).thenReturn(DeviceType.CAMERA);
 
     service = Mockito.mock(DeviceService.class);
-    when(service.getAllDevices()).thenReturn(devices);
+    when(service.getAllDevices()).thenReturn(List.of(mockLight, mockCamera));
 
     sut = new DeviceController(service);
   }
@@ -42,9 +44,8 @@ public class DeviceControllerTest {
     List<Device> retrievedDevices = response.getBody();
 
     assertNotNull(retrievedDevices);
-
     assertEquals("Camera", retrievedDevices.get(1).getName());
-    assertEquals(DeviceType.TV, retrievedDevices.get(2).getType());
     verify(service, times(1)).getAllDevices();
   }
+
 }

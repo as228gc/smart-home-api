@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "devices")
-public class Device {
+public abstract class Device implements ControllableDevice {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -25,13 +25,15 @@ public class Device {
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
-  private DeviceStatus status = DeviceStatus.OFF;
+  private DeviceStatus status;
 
   public Device(String name, DeviceType type) throws IllegalArgumentException {
     validateName(name);
+    validateType(type);
 
     this.name = name;
     this.type = type;
+    this.status = DeviceStatus.OFF;
   }
 
   private void validateName(String name) throws IllegalArgumentException {
@@ -58,7 +60,14 @@ public class Device {
 	}
 
   public void setType(DeviceType newType) {
+    validateType(newType);
     this.type = newType;
+  }
+
+  private void validateType(DeviceType type) throws IllegalArgumentException {
+    if (type == null) {
+      throw new IllegalArgumentException();
+    }
   }
 
   public DeviceStatus getStatus() {
@@ -66,10 +75,15 @@ public class Device {
   }
 
   public void turnOn() {
+    handleTurnOn();
     this.status = DeviceStatus.ON;
   }
 
   public void turnOff() {
+    handleTurnOff();
     this.status = DeviceStatus.OFF;
   }
+
+  protected abstract void handleTurnOn();
+  protected abstract void handleTurnOff();
 }
