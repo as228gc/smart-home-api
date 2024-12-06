@@ -68,4 +68,7 @@ public class Device {
   public void turnOn() {
     this.status = DeviceStatus.ON;
   }
+
+  public void turnOff() {
+  }
 }
