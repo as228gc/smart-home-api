@@ -62,6 +62,6 @@ public class Device {
   }
 
   public DeviceStatus getStatus() {
-    return null;
+    return this.status;
   }
 }
