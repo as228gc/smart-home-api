@@ -85,4 +85,11 @@ public class DeviceTest {
     DeviceType actual = sut.getType();
     assertEquals(expected, actual);
   }
+
+  @Test
+  void getStatusShouldReturnCurrentStatus() {
+    DeviceStatus expected = DeviceStatus.OFF;
+    DeviceStatus actual = sut.getStatus();
+    assertEquals(expected, actual);
+  }
 }

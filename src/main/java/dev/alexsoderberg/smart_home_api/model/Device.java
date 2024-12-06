@@ -60,4 +60,8 @@ public class Device {
   public void setType(DeviceType newType) {
     this.type = newType;
   }
+
+  public DeviceStatus getStatus() {
+    return null;
+  }
 }
