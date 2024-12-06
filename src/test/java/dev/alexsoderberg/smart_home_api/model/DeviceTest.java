@@ -92,4 +92,14 @@ public class DeviceTest {
     DeviceStatus actual = sut.getStatus();
     assertEquals(expected, actual);
   }
+  
+  @Test
+  void turnOnShouldSetStatusToOn() {
+    DeviceStatus current = sut.getStatus();
+    assertEquals(DeviceStatus.OFF, current);
+    sut.turnOn();
+    DeviceStatus expected = DeviceStatus.ON;
+    DeviceStatus actual = sut.getStatus();
+    assertEquals(expected, actual);
+  }
 }

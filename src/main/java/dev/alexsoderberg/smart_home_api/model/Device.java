@@ -64,4 +64,7 @@ public class Device {
   public DeviceStatus getStatus() {
     return this.status;
   }
+
+  public void turnOn() {
+  }
 }
