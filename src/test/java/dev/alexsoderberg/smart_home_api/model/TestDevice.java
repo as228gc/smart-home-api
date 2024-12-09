@@ -6,12 +6,12 @@ public class TestDevice extends Device {
   }
 
   @Override
-  protected void handleTurnOn() {
+  public void turnOn() {
       // Test-specific implementation (empty for now)
   }
 
   @Override
-  protected void handleTurnOff() {
+  public void turnOff() {
       // Test-specific implementation (empty for now)
   }
 }

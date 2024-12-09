@@ -7,9 +7,12 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "devices")
 public abstract class Device implements ControllableDevice {
   @Id
@@ -34,6 +37,10 @@ public abstract class Device implements ControllableDevice {
     this.name = name;
     this.type = type;
     this.status = DeviceStatus.OFF;
+  }
+
+  protected Device() {
+    
   }
 
   private void validateName(String name) throws IllegalArgumentException {
@@ -74,16 +81,11 @@ public abstract class Device implements ControllableDevice {
     return this.status;
   }
 
-  public void turnOn() {
-    handleTurnOn();
-    this.status = DeviceStatus.ON;
+  public void setStatus(DeviceStatus newStatus) {
+    this.status = newStatus;
   }
 
-  public void turnOff() {
-    handleTurnOff();
-    this.status = DeviceStatus.OFF;
-  }
+  public abstract void turnOn();
 
-  protected abstract void handleTurnOn();
-  protected abstract void handleTurnOff();
+  public abstract void turnOff();
 }

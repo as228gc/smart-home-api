@@ -9,6 +9,7 @@ public class TradfriConfig {
   
   private String gatewayUrl;
   private String apiKey;
+  private String identity;
 
   public String getGatewayUrl() {
     return this.gatewayUrl;
@@ -24,5 +25,13 @@ public class TradfriConfig {
 
   public void setApiKey(String key) {
     this.apiKey = key;
+  }
+
+  public String getIdentity() {
+    return this.identity;
+  }
+
+  public void setIdentity(String identity) {
+    this.identity = identity;
   }
 }
