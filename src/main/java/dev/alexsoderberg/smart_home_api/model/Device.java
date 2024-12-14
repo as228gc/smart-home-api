@@ -7,11 +7,14 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "devices")
-public class Device {
+public abstract class Device implements ControllableDevice {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -25,13 +28,19 @@ public class Device {
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
-  private DeviceStatus status = DeviceStatus.OFF;
+  private DeviceStatus status;
 
   public Device(String name, DeviceType type) throws IllegalArgumentException {
     validateName(name);
+    validateType(type);
 
     this.name = name;
     this.type = type;
+    this.status = DeviceStatus.OFF;
+  }
+
+  protected Device() {
+    
   }
 
   private void validateName(String name) throws IllegalArgumentException {
@@ -58,18 +67,25 @@ public class Device {
 	}
 
   public void setType(DeviceType newType) {
+    validateType(newType);
     this.type = newType;
+  }
+
+  private void validateType(DeviceType type) throws IllegalArgumentException {
+    if (type == null) {
+      throw new IllegalArgumentException();
+    }
   }
 
   public DeviceStatus getStatus() {
     return this.status;
   }
 
-  public void turnOn() {
-    this.status = DeviceStatus.ON;
+  public void setStatus(DeviceStatus newStatus) {
+    this.status = newStatus;
   }
 
-  public void turnOff() {
-    this.status = DeviceStatus.OFF;
-  }
+  public abstract void turnOn();
+
+  public abstract void turnOff();
 }
